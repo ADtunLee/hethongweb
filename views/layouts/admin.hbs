@@ -1,0 +1,26 @@
+{{#if user}}
+{{#if user.isAdmin}}
+{{> admin/admin-header }}
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+    {{> admin/admin-topNav}}
+
+
+
+    <div class="content-wrapper">
+
+        {{> admin/messages}}
+
+        {{{body}}}
+
+        {{> admin/admin-footer}}
+    </div>
+</body>
+ 
+</html>
+
+{{else}}
+<h1>Bạn không phải Admin</h1>
+{{/if}}
+{{/if}}

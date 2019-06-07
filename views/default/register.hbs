@@ -1,0 +1,66 @@
+<div class="limiter">
+	{{#if errors}}
+	{{#each errors}}
+	<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+		<strong>{{message}}</strong>
+	</div>
+	{{/each}}
+	{{/if}}
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+				<span class="login100-form-title-1">
+					Register
+				</span>
+			</div>
+
+			<form class="login100-form validate-form" action="/register" method="POST" enctype="multipart/form-data">
+
+				<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+					<span class="label-input100">Fist name</span>
+					<input class="input100" type="text" name="firstName" placeholder="Enter fist name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+					<span class="label-input100">Last Name</span>
+					<input class="input100" type="text" name="lastName" placeholder="Enter last name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+					<span class="label-input100">Email</span>
+					<input class="input100" type="text" name="email" placeholder="Enter email">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+					<span class="label-input100">Password</span>
+					<input class="input100" type="password" name="password" placeholder="Enter password">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+					<span class="label-input100">Confirm Password</span>
+					<input class="input100" type="password" name="passwordConfirm" placeholder="Enter password confirm">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input m-b-18">
+					<label for="file">Avatar</label>
+					<input type="file" class="form-control" id="file" name="uploadedFile"
+						accept="image/jpeg, image/jpg, image/png, image/bmp">
+				</div>
+
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" type="submit">
+						Register
+					</button>
+				</div>
+			</form>
+			<div class="text-center">
+				<a class="d-block small mt-3" href="/login">Login Page</a>
+				<a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+				<a class="d-block small" href="/">Home Page?</a>
+			</div>
+		</div>
+	</div>
+</div>

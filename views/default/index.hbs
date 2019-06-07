@@ -1,0 +1,33 @@
+<div class="slider"></div><!-- slider -->
+<section class="blog-area section">
+    <div class="container">
+
+        <div class="row">
+            {{#each posts}}
+            <div class="col-lg-4 col-md-6">
+
+                <div class="card h-100">
+                    <div class="single-post post-style-1">
+
+                        <div class="blog-image"><img src="{{file}}" alt="Blog Image"></div>
+
+                        <a class="avatar" href="#"><img src="{{user.avatar}}" alt="Profile Image"></a>
+
+                        <div class="blog-info">
+
+                            <h2 class="title"><a href="/post/{{id}}">{{title}}</a></h2>
+                            <ul class="post-footer">
+                                <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                                <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                            </ul>
+
+                        </div><!-- blog-info -->
+                    </div><!-- single-post -->
+                </div><!-- card -->
+
+            </div><!-- col-lg-4 col-md-6 -->
+            {{/each}}
+        </div><!-- row -->
+    </div><!-- container -->
+    </footer>
