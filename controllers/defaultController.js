@@ -11,23 +11,23 @@ module.exports = {
         Post.find()
             .populate({path:'user'})
             .then(posts =>{
-            res.render('default/index', {posts: posts, categories: categories, user: posts.user});
+            res.render('default/index', {posts: posts, categories: categories, users: posts.user});
         })
         
     },
     loginGet: (req, res) => {
         res.render('default/login', {message: req.flash('error')});
     },
-    loginPost: (req,res)=>{
-       
-    },
+    
     registerGet: (req, res) => {
         res.render('default/register');
     },
-
+    loginPost: (req,res)=>{
+       
+    },
     registerPost: (req, res) => {
         let filename = '';
-
+        const code = 'andrelam123';
         if (!isEmpty(req.files)) {
             let file = req.files.uploadedFile;
             filename = file.name;
@@ -71,6 +71,9 @@ module.exports = {
                     res.redirect('/login');
                 } else {
                     const newUser = new User(req.body);
+                    if(req.body.admincode == code){
+                        newUser.isAdmin = true;
+;                    };
                     newUser.avatar = `/uploads/${filename}`;
                     bcrypt.genSalt(10, (err, salt) => {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
