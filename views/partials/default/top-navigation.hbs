@@ -10,8 +10,10 @@
 			{{#if user}}
 				{{#if user.isAdmin}}
 				<li><a href="/admin">Admin page</a></li>
+				<li><a href="/userInfo/{{user.id}}">Profile</a></li>
 				<li><a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a></li>
 				{{else}}
+				<li><a href="/userInfo/{{user.id}}">Profile</a></li>
 				<li><a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a></li>
 				{{/if}}
 			{{else}}

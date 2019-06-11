@@ -27,7 +27,7 @@ module.exports = {
     },
     registerPost: (req, res) => {
         let filename = '';
-        const code = 'andrelam123';
+        const code = 'admincode123';
         if (!isEmpty(req.files)) {
             let file = req.files.uploadedFile;
             filename = file.name;
@@ -49,6 +49,9 @@ module.exports = {
         if (!req.body.email) {
             errors.push({message: 'Email field is mandatory'});
         }
+        if (!req.body.phone) {
+            errors.push({message: 'Phone is mandatory'});
+        }
         if (!req.body.password || !req.body.passwordConfirm) {
             errors.push({message: 'Password field is mandatory'});
         }
@@ -62,6 +65,8 @@ module.exports = {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
+                phone: req.body.phone,
+                profesion: req.body.profession,
                 avatar: `/uploads/${filename}`
             });
         } else {
@@ -132,14 +137,15 @@ module.exports = {
     },
     getUserInfo: async(req,res) =>{
         const id = req.params.id;
-        User.findById(id).then(user =>{
+        User.findById(id)
+            .populate({path:'user'})
+            .then(user =>{
             if (!user) {
-                res.status(404).json({message: 'No Post Found'});
+                res.status(404).json({message: 'No User Found'});
             }
             else {
-                res.render('default/infoUser', {user: user});
+                res.render('default/infoUser', {user:user});
             }
         })
-    }
-
+    },
 };
