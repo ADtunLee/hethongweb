@@ -66,11 +66,11 @@ module.exports = {
                 post.status = req.body.status;
                 post.allowComments = commentsAllowed;
                 post.description = req.body.description;
-                post.category = req.body.category;
+                post.category = req.body.category; 
 
 
                 post.save().then(updatePost => {
-                    req.flash('success-message', `Bai viet ${updatePost.title} da duoc chinh sua.`);
+                    req.flash('success-message', `Bài viết ${updatePost.title} đã được chỉnh sửa.`);
                     res.redirect('/admin/posts');
                 });
             });
@@ -78,7 +78,7 @@ module.exports = {
     deletePost: (req,res)=>{
         Post.findByIdAndDelete(req.params.id)
             .then(deletedPost => {
-                req.flash('success-message', `Bai viet ${deletedPost.title} da bi xoa.`);
+                req.flash('success-message', `Bài viết ${deletedPost.title} đã bị xóa.`);
                 res.redirect('/admin/posts');
             });
     },

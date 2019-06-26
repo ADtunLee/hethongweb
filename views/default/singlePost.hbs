@@ -20,12 +20,10 @@
                         <div class="post-image"><img src="{{post.file}}" alt="Blog Image"></div>
 
                         <div class="para">{{post.description}}</div>
-
                         <ul class="tags">
-                            <li><a href="#">Mnual</a></li>
-                            <li><a href="#">Liberty</a></li>
-                            <li><a href="#">Recommendation</a></li>
-                            <li><a href="#">Inspiration</a></li>
+                            {{#each categories}}
+                            <li><a href="#">{{title}}</a></li>
+                             {{/each}}
                         </ul>
                     </div><!-- blog-post-inner -->
 
@@ -67,9 +65,7 @@
 
                     <div class="sidebar-area about-area">
                         <h4 class="title"><b>ABOUT US</b></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                            Ut enim ad minim veniam</p>
+                        <p></p>
                     </div>
                     <div class="tag-area">
 

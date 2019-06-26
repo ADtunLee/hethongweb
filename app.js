@@ -1,4 +1,3 @@
-/* Importing Different Modules */
 
 const {globalVariables} = require('./config/configuration');
 
@@ -17,7 +16,7 @@ const passport = require('passport');
 const app = express();
 
 
-// Configure Mongoose to Connect to MongoDB
+//   cấu hình mongoose
 mongoose.connect(mongoDbUrl, { useNewUrlParser: true })
     .then(response => {
         console.log("MongoDB Connected Successfully.");
@@ -26,14 +25,13 @@ mongoose.connect(mongoDbUrl, { useNewUrlParser: true })
 });
 
 
-
-/* Configure express*/
+// cấu hình express.
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-/*  Flash and Session*/
+//Flash and Session
 app.use(session({
     secret: 'anysecret',
     saveUninitialized: true,
@@ -42,27 +40,27 @@ app.use(session({
 
 app.use(flash());
 
-/* Passport Initialize */
+// Passport 
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Use Global Variables */
+
 app.use(globalVariables);
 
 
-/* File Upload Middleware*/
+// File Upload Middleware
 app.use(fileUpload());
 
-/* Setup View Engine To Use Handlebars */
+// cài đặt tempalate engine
 app.engine('hbs', exphbs({extname:'hbs',defaultLayout: 'default', helpers: {select: selectOption}}));
 app.set('view engine' , 'hbs');
 
 
-/* Method Override Middleware*/
+// Method Override
 app.use(methodOverride('newMethod'));
 
 
-/* Routes */
+// routes
 const defaultRoutes = require('./routes/defaultRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
@@ -70,7 +68,7 @@ app.use('/', defaultRoutes);
 app.use('/admin', adminRoutes);
 
 
-/* Start The Server */
+// start
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

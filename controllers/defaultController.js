@@ -72,7 +72,7 @@ module.exports = {
         } else {
             User.findOne({email: req.body.email}).then(user => {
                 if (user) {
-                    req.flash('error-message', 'Email already exists, try to login.');
+                    req.flash('error-message', 'Email đã tồn tại, hãy thử đăng nhập.');
                     res.redirect('/login');
                 } else {
                     const newUser = new User(req.body);
@@ -84,7 +84,7 @@ module.exports = {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
                             newUser.password = hash;
                             newUser.save().then(user => {
-                                req.flash('success-message', 'You are now registered');
+                                req.flash('success-message', 'Bạn đã đăng ký thành công');
                                 res.redirect('/login');
                             });
                         });
@@ -101,7 +101,7 @@ module.exports = {
             .populate([{path: 'comments', populate: {path: 'user', model: 'user'}},{path:'user'},{path:'category'}])
             .then(post => {
             if (!post) {
-                res.status(404).json({message: 'No Post Found'});
+                res.status(404).json({message: 'Không tồn tại bài viết'});
             }
             else {
                 res.render('default/singlePost', {post: post, comments: post.comments, categories: categories, users: post.user,category:post.category});
@@ -120,7 +120,7 @@ module.exports = {
                 post.comments.push(newComment);
                 post.save().then(savedPost => {
                     newComment.save().then(savedComment => {
-                      req.flash('success-message', 'Your comment was submitted for review.');
+                      req.flash('success-message', 'Comment thành công.');
                       res.redirect(`/post/${post._id}`);
                     });
                 });
@@ -130,7 +130,7 @@ module.exports = {
         }
 
         else {
-            req.flash('error-message', 'Login first to comment');
+            req.flash('error-message', 'Đăng nhập để bình luận');
             res.redirect('/login');
         }
 
@@ -141,7 +141,7 @@ module.exports = {
             .populate({path:'user'})
             .then(user =>{
             if (!user) {
-                res.status(404).json({message: 'No User Found'});
+                res.status(404).json({message: 'Không tìm thấy người dùng'});
             }
             else {
                 res.render('default/infoUser', {user:user});
