@@ -14,7 +14,7 @@ router.all('/*', (req, res, next) => {
 });
 
 
-// noinspection JSCheckFunctionSignatures
+
 router.route('/')
     .get(defaultController.index);
 

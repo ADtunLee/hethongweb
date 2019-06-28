@@ -19,7 +19,7 @@ router.route('/')
 
 router.route('/posts')
     .get(adminController.getPosts)
-    
+
 
 router.route('/posts/create')
     .get(adminController.createPosts)
@@ -36,7 +36,7 @@ router.route('/posts/delete/:id')
 router.route('/category')
     .get(adminController.getCategories)
 
-router.route('/category/create')    
+router.route('/category/create')
     .post(adminController.createCategories)
 
 router.route('/category/edit/:id')

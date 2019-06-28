@@ -3,8 +3,12 @@ const Category = require('../models/CategoryModel').Category;
 const Comment = require('../models/CommentModel').Comment;
 const {isEmpty} = require('../config/customFunctions');
 module.exports = {
-    index: (req, res) => {
-        res.render('admin/index');
+    index: (req, res, next) => {
+        if (req.isAuthenticated() && req.user.isAdmin == true){
+            res.render('admin/index')
+        }else{
+            res.send('ban khong co quyen')
+        }
     },
     getPosts: (req,res) =>{
         Post.find()
